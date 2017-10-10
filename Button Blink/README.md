@@ -15,7 +15,7 @@ determine when to toggle the LED.
 ## Important Distinctions
 
 The boards differed only in the afforementioned GPIO high impedance mode as well as
-the pinouts for th pull-up resistor.
+the pinouts for the pull-up resistor.
 
 The MSP430FR2311, MSP430F5529, and MSP430FR6989 use the same pinouts while the
 MSP430G2553 and MSP430FR5994 each use different ones.
@@ -50,7 +50,7 @@ int main(void) {
   for (;;) {
     
 	//Runs when the value of the port input is the same as the input
-	//i.e. the button is not pressed
+	//i.e. the button is high
 	while(P1IN & BIT3)
         {
             // Output is set to the opposite of what the LED is
@@ -97,7 +97,7 @@ int main(void) {
   for (;;) {
     
 	//Runs when the value of the port input is the same as the input
-	//i.e. the button is not pressed
+	//i.e. the button is high
 	while(P1IN & BIT1)
         {
             // Output is set to the opposite of what the LED is
@@ -139,7 +139,7 @@ int main(void) {
   for (;;) {
     
     //Runs when the value of the port input is the same as the input
-	//i.e. the button is not pressed
+	//i.e. the button is high
 	while(P1IN & BIT1)
         {
             // Output is set to the opposite of what the LED is
@@ -186,7 +186,7 @@ int main(void) {
   for (;;) {
     
 	//Runs when the value of the port input is the same as the input
-	//i.e. the button is not pressed
+	//i.e. the button is high
 	while(P5IN & BIT6)
         {
             // Output is set to the opposite of what the LED is
@@ -233,7 +233,7 @@ int main(void) {
   for (;;) {
     
 	//Runs when the value of the port input is the same as the input
-	//i.e. the button is not pressed
+	//i.e. the button is high
 	while(P1IN & BIT1)
         {
             // Output is set to the opposite of what the LED is
@@ -276,10 +276,10 @@ int main(void) {
   P1OUT = BIT3;
   
   P1IE |= BIT3; // Interrupt Enabled on P1.3 (the button)
-  P1IFG &= ~BIT3; // CLears interrupt flag once button P1.3 is pressed
+  P1IFG &= ~BIT3; // Clears interrupt flag once button P1.3 is pressed
   
   P1REN |= BIT3; // Enable Pull Up on (P1.3)
-  P1IES |= BIT3; // P1.3 Hi/lo edge
+  P1IES |= BIT3; // P1.3 Sets on falling edge
  
 __bis_SR_register(GIE); // Enables all integrupts (Global)
 
